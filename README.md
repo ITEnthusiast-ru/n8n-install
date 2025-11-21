@@ -1,151 +1,151 @@
 # n8n Install
 
-**n8n Install** is an open-source Docker Compose template designed to significantly simplify setting up a comprehensive, self-hosted environment for n8n and Flowise. It bundles essential supporting tools like Open WebUI (as an interface for n8n agents), Supabase (database, vector information storage, authentication), Qdrant (high-performance vector information storage), Langfuse (to observe AI model performance), SearXNG (private metasearch), Grafana/Prometheus (monitoring), Crawl4ai (web crawling), and Caddy (for managed HTTPS). Plus, during setup, you can optionally import over 300 community workflows into your n8n instance!
+**n8n Install** — это проект с открытым исходным кодом, представляющий собой шаблон Docker Compose, предназначенный для значительного упрощения настройки комплексной, самохостинговой среды для n8n и Flowise. Он включает в себя основные вспомогательные инструменты, такие как Open WebUI (в качестве интерфейса для агентов n8n), Supabase (база данных, векторное хранилище, аутентификация), Qdrant (высокопроизводительное векторное хранилище), Langfuse (для наблюдения за производительностью AI-моделей), SearXNG (приватная метапоисковая система), Grafana/Prometheus (мониторинг), Crawl4ai (веб-краулинг) и Caddy (для управления HTTPS). Кроме того, во время установки вы можете опционально импортировать более 300 готовых рабочих процессов (workflows) от сообщества в ваш экземпляр n8n!
 
-### Why This Setup?
+### Зачем такая настройка?
 
-This installer helps you create your own powerful, private AI workshop. Imagine having a suite of tools at your fingertips to:
+Этот установщик помогает вам создать вашу собственную мощную, приватную AI-мастерскую. Представьте, что у вас под рукой есть набор инструментов для:
 
-- Automate repetitive tasks.
-- Build smart assistants tailored to your needs.
-- Analyze information and gain insights.
-- Generate creative content.
+- Автоматизации повторяющихся задач.
+- Создания умных ассистентов под ваши нужды.
+- Анализа информации и получения инсайтов.
+- Генерации креативного контента.
 
-This setup provides a comprehensive suite of cutting-edge services, all pre-configured to work together. Key advantages include:
+Данная настройка предоставляет комплексный набор современных сервисов, предварительно сконфигурированных для совместной работы. Ключевые преимущества:
 
-- **Rich Toolset:** Get a curated collection of powerful open-source tools for AI development, automation, and monitoring, all in one place.
-- **Scalable n8n Performance:** n8n runs in `queue` mode by default, leveraging Redis for task management and Postgres for data storage. You can dynamically specify the number of n8n workers during installation, allowing for robust parallel processing of your workflows to handle demanding loads.
-- **Full Control:** All of this is hosted by you, giving you full control over your data, operations, and how resources are allocated.
+- **Богатый набор инструментов:** Получите подобранную коллекцию мощных инструментов с открытым исходным кодом для разработки AI, автоматизации и мониторинга, все в одном месте.
+- **Масштабируемая производительность n8n:** n8n по умолчанию работает в режиме `queue`, используя Redis для управления задачами и Postgres для хранения данных. Вы можете динамически указывать количество воркеров n8n во время установки, что позволяет обеспечить надежную параллельную обработку ваших рабочих процессов для работы с высокой нагрузкой.
+- **Полный контроль:** Всё это размещается у вас, давая вам полный контроль над вашими данными, операциями и распределением ресурсов.
 
-### What's Included
+### Что включено
 
 
-✅ **[Caddy](https://caddyserver.com/), [Postgres](https://www.postgresql.org/), and [Redis](https://redis.io/)** - Core services for web proxy, database, and caching, which are always included.
+✅ **[Caddy](https://caddyserver.com/), [Postgres](https://www.postgresql.org/) и [Redis](https://redis.io/)** — Основные сервисы для веб-прокси, базы данных и кэширования, которые включены всегда.
 
-The installer also makes the following powerful open-source tools **available for you to select and deploy** via an interactive wizard during setup:
+Установщик также делает **доступными для выбора и развертывания** через интерактивный мастер во время установки следующие мощные инструменты с открытым исходным кодом:
 
-✅ [**n8n**](https://n8n.io/) - A low-code platform with over 400 integrations and advanced AI components to automate workflows.
+✅ [**n8n**](https://n8n.io/) — Платформа с низким кодом (low-code) с более чем 400 интеграциями и продвинутыми AI-компонентами для автоматизации рабочих процессов.
 
-✅ [**ComfyUI**](https://github.com/comfyanonymous/ComfyUI) - A powerful, node-based UI for Stable Diffusion workflows. Build and run image-generation pipelines visually, with support for custom nodes and extensions.
+✅ [**ComfyUI**](https://github.com/comfyanonymous/ComfyUI) — Мощный, нод-ориентированный интерфейс для рабочих процессов Stable Diffusion. Визуально создавайте и запускайте пайплайны генерации изображений с поддержкой кастомных нод и расширений.
 
-✅ [**Crawl4ai**](https://github.com/unclecode/crawl4ai) - A flexible web crawler designed for AI, enabling you to extract data from websites for your projects.
+✅ [**Crawl4ai**](https://github.com/unclecode/crawl4ai) — Гибкий веб-краулер, разработанный для AI, позволяющий извлекать данные с веб-сайтов для ваших проектов.
 
-✅ [**Docling**](https://github.com/docling-project/docling-serve) - Universal document converter that transforms PDF, DOCX, PPTX, XLSX, HTML, and images into clean Markdown or JSON. Features advanced PDF parsing, OCR support, and a REST API with optional web UI. Perfect for document processing in n8n workflows.
+✅ [**Docling**](https://github.com/docling-project/docling-serve) — Универсальный конвертер документов, преобразующий PDF, DOCX, PPTX, XLSX, HTML и изображения в чистый Markdown или JSON. Обладает продвинутым парсингом PDF, поддержкой OCR и REST API с опциональным веб-интерфейсом. Идеален для обработки документов в рабочих процессах n8n.
 
-✅ [**Dify**](https://dify.ai/) - An open-source AI application development platform that provides comprehensive LLMOps capabilities, including workflow management, prompt engineering, RAG pipelines, and AI agent orchestration. Perfect for building production-ready AI applications.
+✅ [**Dify**](https://dify.ai/) — Платформа с открытым исходным кодом для разработки AI-приложений, предоставляющая комплексные возможности LLMOps, включая управление рабочими процессами, инженерию промптов, RAG-пайплайны и оркестрацию AI-агентов. Идеальна для создания готовых к продакшену AI-приложений.
 
-✅ [**Flowise**](https://flowiseai.com/) - A no-code/low-code AI agent builder that complements n8n perfectly, allowing you to create sophisticated AI applications with ease.
+✅ [**Flowise**](https://flowiseai.com/) — Конструктор AI-агентов без кода/с низким кодом (no-code/low-code), который идеально дополняет n8n, позволяя с легкостью создавать сложные AI-приложения.
 
-✅ [**Gotenberg**](https://gotenberg.dev/) - A stateless API for converting HTML, Markdown, Word, Excel, and other documents to PDF, PNG, or JPEG. Available only within the Docker network for internal use by n8n workflows and other services.
+✅ [**Gotenberg**](https://gotenberg.dev/) — Stateless API для конвертации HTML, Markdown, Word, Excel и других документов в PDF, PNG или JPEG. Доступен только внутри Docker-сети для внутреннего использования рабочими процессами n8n и другими сервисами.
 
-✅ [**Grafana**](https://grafana.com/) - An open-source platform for visualizing monitoring data, helping you understand system performance at a glance.
+✅ [**Grafana**](https://grafana.com/) — Платформа с открытым исходным кодом для визуализации данных мониторинга, помогающая быстро оценить производительность системы.
 
-✅ [**Langfuse**](https://langfuse.com/) - An open-source platform to help you observe and understand how your AI agents are performing, making it easier to debug and improve them.
+✅ [**Langfuse**](https://langfuse.com/) — Платформа с открытым исходным кодом, помогающая наблюдать и понимать, как работают ваши AI-агенты, упрощая их отладку и улучшение.
 
-✅ [**Letta**](https://docs.letta.com/) - An open-source agent server and SDK that can be connected to various LLM API backends (OpenAI, Anthropic, Ollama, etc.), enabling you to build and manage AI agents.
+✅ [**Letta**](https://docs.letta.com/) — Сервер и SDK для агентов с открытым исходным кодом, которые можно подключать к различным бэкендам LLM API (OpenAI, Anthropic, Ollama и т.д.), позволяя создавать и управлять AI-агентами.
 
-✅ [**LightRAG**](https://github.com/HKUDS/LightRAG) - A simple and fast graph-based Retrieval-Augmented Generation system with automatic knowledge graph extraction, dual-level retrieval mechanisms, and incremental updates. Supports multiple storage backends (PostgreSQL, Neo4j, JSON) and embedding models.
+✅ [**LightRAG**](https://github.com/HKUDS/LightRAG) — Простая и быстрая графовая система Retrieval-Augmented Generation с автоматическим извлечением графа знаний, двухуровневыми механизмами поиска и инкрементальными обновлениями. Поддерживает несколько бэкендов хранения (PostgreSQL, Neo4j, JSON) и моделей эмбеддингов.
 
-✅ [**LibreTranslate**](https://docs.libretranslate.com/) - Self-hosted translation API (50+ languages).
+✅ [**LibreTranslate**](https://docs.libretranslate.com/) — Самохостинговый API для перевода (более 50 языков).
 
-✅ [**Neo4j**](https://neo4j.com/) - A graph database management system that allows you to model, store, and query data as a network of nodes and relationships.
+✅ [**Neo4j**](https://neo4j.com/) — Система управления графовыми базами данных, позволяющая моделировать, хранить и запрашивать данные как сеть узлов и связей.
 
-✅ [**Ollama**](https://ollama.com/) - Run Llama 3, Mistral, Gemma, and other large language models locally.
+✅ [**Ollama**](https://ollama.com/) — Запускайте Llama 3, Mistral, Gemma и другие большие языковые модели локально.
 
-✅ [**Open WebUI**](https://openwebui.com/) - A user-friendly, ChatGPT-like interface to interact privately with your AI models and n8n agents.
+✅ [**Open WebUI**](https://openwebui.com/) — Пользовательский интерфейс, похожий на ChatGPT, для приватного взаимодействия с вашими AI-моделями и агентами n8n.
 
-✅ [**PaddleOCR**](https://www.paddleocr.ai/latest/en/index.html) - A CPU-ready OCR API powered by PaddleX Basic Serving. 
+✅ [**PaddleOCR**](https://www.paddleocr.ai/latest/en/index.html) — Готовый к использованию на CPU OCR API на основе PaddleX Basic Serving.
 
-✅ [**Portainer**](https://www.portainer.io/) - A lightweight, secure web UI to manage your Docker environment (containers, images, volumes, networks) with ease.
+✅ [**Portainer**](https://www.portainer.io/) — Легковесный, безопасный веб-интерфейс для удобного управления вашей Docker-средой (контейнеры, образы, тома, сети).
 
-✅ [**Postgresus**](https://github.com/RostislavDugin/postgresus) - PostgreSQL monitoring and automated backups with a self-hosted UI.
+✅ [**Postgresus**](https://github.com/RostislavDugin/postgresus) — Мониторинг PostgreSQL и автоматизированные бэкапы с самохостинговым UI.
 
-✅ [**Postiz**](https://postiz.com/) - An open-source social media scheduling and publishing platform.
+✅ [**Postiz**](https://postiz.com/) — Платформа с открытым исходным кодом для планирования и публикации постов в социальных сетях.
 
-✅ [**Prometheus**](https://prometheus.io/) - An open-source monitoring and alerting toolkit to keep an eye on system health.
+✅ [**Prometheus**](https://prometheus.io/) — Набор инструментов с открытым исходным кодом для мониторинга и оповещений, позволяющий следить за состоянием системы.
 
-✅ [**Qdrant**](https://qdrant.tech/) - A high-performance open-source vector store, specialized for AI. While Supabase also offers vector capabilities, Qdrant is included for its speed, making it ideal for demanding AI tasks.
+✅ [**Qdrant**](https://qdrant.tech/) — Высокопроизводительное векторное хранилище с открытым исходным кодом, специализированное для AI. Хотя Supabase также предлагает векторные возможности, Qdrant включен из-за своей скорости, что делает его идеальным для требовательных AI-задач.
 
-✅ [**RAGApp**](https://github.com/ragapp/ragapp) - Open-source application to build Retrieval-Augmented Generation (RAG) assistants over your data. Provides a web UI for chat and an HTTP API for integration with your workflows.
+✅ [**RAGApp**](https://github.com/ragapp/ragapp) — Приложение с открытым исходным кодом для создания RAG-ассистентов (Retrieval-Augmented Generation) поверх ваших данных. Предоставляет веб-интерфейс для чата и HTTP API для интеграции с вашими рабочими процессами.
 
-✅ [**RAGFlow**](https://ragflow.io/) - An open-source RAG engine based on deep document understanding with Elasticsearch backend, providing truthful question-answering capabilities with well-founded citations from complex formatted data.
+✅ [**RAGFlow**](https://ragflow.io/) — RAG-движок с открытым исходным кодом на основе глубокого понимания документов с бэкендом на Elasticsearch, предоставляющий достоверные ответы на вопросы с обоснованными цитатами из сложноформатированных данных.
 
-✅ [**SearXNG**](https://searxng.org/) - A free, open-source internet metasearch engine. It aggregates results from numerous search services without tracking or profiling you, ensuring your privacy.
+✅ [**SearXNG**](https://searxng.org/) — Бесплатная метапоисковая система с открытым исходным кодом. Она агрегирует результаты из многочисленных поисковых сервисов без отслеживания или профилирования вас, обеспечивая вашу приватность.
 
-✅ [**Supabase**](https://supabase.com/) - An open-source alternative to Firebase, providing database storage, user authentication, and more. It's a popular choice for AI applications.
+✅ [**Supabase**](https://supabase.com/) — Альтернатива Firebase с открытым исходным кодом, предоставляющая хранение в базе данных, аутентификацию пользователей и многое другое. Это популярный выбор для AI-приложений.
 
-✅ [**WAHA**](https://waha.devlike.pro/) - WhatsApp HTTP API (REST API) that you can configure in a click! 3 engines: WEBJS (browser based), NOWEB (websocket nodejs), GOWS (websocket go).
+✅ [**WAHA**](https://waha.devlike.pro/) — WhatsApp HTTP API (REST API), который можно настроить в один клик! 3 движка: WEBJS (на основе браузера), NOWEB (websocket nodejs), GOWS (websocket go).
 
-✅ [**Weaviate**](https://weaviate.io/) - An open-source AI-native vector database with a focus on scalability and ease of use. It can be used for RAG, hybrid search, and more.
+✅ [**Weaviate**](https://weaviate.io/) — Векторная база данных с открытым исходным кодом, ориентированная на AI, с фокусом на масштабируемость и простоту использования. Может использоваться для RAG, гибридного поиска и многого другого.
 
-### Included Community Workflows
+### Включенные рабочие процессы сообщества
 
-Get started quickly with a vast library of pre-built automations (optional import during setup)! This collection includes over 300 workflows covering a wide range of use cases:
+Быстро начните работу с обширной библиотекой предварительно созданных автоматизаций (опциональный импорт во время установки)! Эта коллекция включает более 300 рабочих процессов, охватывающих широкий спектр случаев использования:
 
-🚦 **What's inside?**
+🚦 **Что внутри?**
 
-- **AI Agents & Chatbots:** RAG, LLM, LangChain, Ollama, OpenAI, Claude, Gemini, and more
-- **Gmail & Outlook:** Smart labeling, auto-replies, PDF handling, and email-to-Notion
-- **HR, E-commerce, IT, Security, Research, and more!**
-- **Notion, Airtable, Google Sheets:** Data sync, AI summaries, knowledge bases
-- **PDF, Image, Audio, Video:** Extraction, summarization, captioning, speech-to-text
-- **Slack, Mattermost:** Ticketing, feedback analysis, notifications
-- **Social Media:** LinkedIn, Pinterest, Instagram, Twitter/X, YouTube, TikTok automations
-- **Telegram, WhatsApp, Discord:** Bots, notifications, voice, and image workflows
-- **WordPress, WooCommerce:** AI content, chatbots, auto-tagging
+- **AI-агенты и чат-боты:** RAG, LLM, LangChain, Ollama, OpenAI, Claude, Gemini и другие.
+- **Gmail и Outlook:** Умная сортировка, автоответы, обработка PDF, email-to-Notion.
+- **HR, E-commerce, IT, Безопасность, Исследования и многое другое!**
+- **Notion, Airtable, Google Sheets:** Синхронизация данных, AI-суммаризация, базы знаний.
+- **PDF, Изображения, Аудио, Видео:** Извлечение, суммаризация, создание субтитров, преобразование речи в текст.
+- **Slack, Mattermost:** Тикеты, анализ отзывов, уведомления.
+- **Социальные сети:** Автоматизации для LinkedIn, Pinterest, Instagram, Twitter/X, YouTube, TikTok.
+- **Telegram, WhatsApp, Discord:** Боты, уведомления, голосовые и графические рабочие процессы.
+- **WordPress, WooCommerce:** AI-контент, чат-боты, автоматическое тегирование.
 
-## Installation
+## Установка
 
-### Prerequisites before Installation
+### Предварительные требования перед установкой
 
-1.  **Domain Name:** You need a registered domain name (e.g., `yourdomain.com`).
-2.  **DNS Configuration:** Before running the installation script, you **must** configure DNS A-record for your domain, pointing to the public IP address of the server where you'll install this system. Replace `yourdomain.com` with your actual domain:
-    - **Wildcard Record:** `A *.yourdomain.com` -> `YOUR_SERVER_IP`
-3.  **Server:** Minimum server system requirements: Ubuntu 24.04 LTS, 64-bit.
-    - For running **all available services**: at least **8 GB Memory / 4 CPU Cores / 60 GB Disk Space **.
-    - For a minimal setup with only **n8n and Flowise**: **4 GB Memory / 2 CPU Cores / 30 GB Disk Space**.
+1.  **Доменное имя:** Вам нужно зарегистрированное доменное имя (например, `yourdomain.com`).
+2.  **Настройка DNS:** Перед запуском скрипта установки вы **должны** настроить DNS A-запись для вашего домена, указывающую на публичный IP-адрес сервера, где вы будете устанавливать эту систему. Замените `yourdomain.com` на ваш реальный домен:
+    - **Wildcard запись:** `A *.yourdomain.com` -> `ВАШ_IP_АДРЕС_СЕРВЕРА`
+3.  **Сервер:** Минимальные системные требования сервера: Ubuntu 24.04 LTS, 64-битная.
+    - Для запуска **всех доступных сервисов**: как минимум **8 ГБ ОЗУ / 4 ядра CPU / 60 ГБ дискового пространства**.
+    - Для минимальной настройки только с **n8n и Flowise**: **4 ГБ ОЗУ / 2 ядра CPU / 30 ГБ дискового пространства**.
 
-### Running the Install
+### Запуск установки
 
-The recommended way to install is using the provided main installation script.
+Рекомендуемый способ установки — использование предоставленного основного скрипта установки.
 
-1.  Connect to your server via SSH.
-2.  Run the following command:
+1.  Подключитесь к вашему серверу по SSH.
+2.  Выполните следующую команду:
 
     ```bash
     git clone https://github.com/kossakovsky/n8n-install && cd n8n-install && sudo bash ./scripts/install.sh
     ```
 
-This single command automates the entire setup process, including:
+Эта единственная команда автоматизирует весь процесс настройки, включая:
 
-- Preparing your system (updates, firewall configuration, and basic security enhancements like brute-force protection).
-- Installing Docker and Docker Compose (tools for running applications in isolated environments).
-- Generating a configuration file (`.env`) with necessary secrets and your domain settings.
-- Launching all the services.
+- Подготовку вашей системы (обновления, настройка фаервола и базовое усиление безопасности, например, защита от брут-форса).
+- Установку Docker и Docker Compose (инструменты для запуска приложений в изолированных средах).
+- Генерацию файла конфигурации (`.env`) с необходимыми секретами и настройками вашего домена.
+- Запуск всех сервисов.
 
-During the installation, the script will prompt you for:
+Во время установки скрипт запросит у вас:
 
-1.  Your **primary domain name** (Required, e.g., `yourdomain.com`). This is the domain for which you've configured the wildcard DNS record.
-2.  Your **email address** (Required, used for service logins like Flowise, Supabase dashboard, Grafana, and for SSL certificate registration with Let's Encrypt).
-3.  An optional **OpenAI API key** (Not required. If provided, it can be used by Supabase AI features and Crawl4ai. Press Enter to skip).
-4.  Whether you want to **import ~300 ready-made n8n community workflows** (y/n, Optional. This can take 20-30 minutes, depending on your server and network speed).
-5.  The **number of n8n workers** you want to run (Required, e.g., 1, 2, 3, 4. This determines how many workflows can be processed in parallel. Defaults to 1 if not specified).
-6.  A **Service Selection Wizard** will then appear, allowing you to choose which of the available services (like Flowise, Supabase, Qdrant, Open WebUI, etc.) you want to deploy. Core services (Caddy, Postgres, Redis) will be set up to support your selections.
+1.  Ваше **основное доменное имя** (Обязательно, например, `yourdomain.com`). Это домен, для которого вы настроили wildcard DNS запись.
+2.  Ваш **email-адрес** (Обязательно, используется для входа в сервисы, такие как Flowise, дашборд Supabase, Grafana, а также для регистрации SSL-сертификата в Let's Encrypt).
+3.  Опциональный **OpenAI API ключ** (Не обязательно. Если предоставлен, может использоваться AI-функциями Supabase и Crawl4ai. Нажмите Enter, чтобы пропустить).
+4.  Желаете ли вы **импортировать ~300 готовых рабочих процессов n8n от сообщества** (y/n, Опционально. Это может занять 20-30 минут в зависимости от вашего сервера и скорости сети).
+5.  **Количество n8n воркеров**, которое вы хотите запустить (Обязательно, например, 1, 2, 3, 4. Это определяет, сколько рабочих процессов может обрабатываться параллельно. По умолчанию 1, если не указано).
+6.  Затем появится **Мастер выбора сервисов**, позволяющий вам выбрать, какие из доступных сервисов (такие как Flowise, Supabase, Qdrant, Open WebUI и т.д.) вы хотите развернуть. Основные сервисы (Caddy, Postgres, Redis) будут настроены для поддержки вашего выбора.
 
-Upon successful completion, the script will display a summary report. This report contains the access URLs and credentials for the deployed services. **Save this information in a safe place!**
+После успешного завершения скрипт отобразит сводный отчет. Этот отчет содержит URL-адреса доступа и учетные данные для развернутых сервисов. **Сохраните эту информацию в надежном месте!**
 
-## ⚡️ Quick Start and Usage
+## ⚡️ Быстрый старт и использование
 
-After successful installation, your services are up and running! Here's how to get started:
+После успешной установки ваши сервисы запущены и работают! Вот как начать работу:
 
-1.  **Access Your Services:**
-    The installation script provided a summary report with all access URLs and credentials. Please refer to that report. The main services will be available at the following addresses (replace `yourdomain.com` with your actual domain):
+1.  **Доступ к вашим сервисам:**
+    Скрипт установки предоставил сводный отчет со всеми URL-адресами доступа и учетными данными. Пожалуйста, обратитесь к этому отчету. Основные сервисы будут доступны по следующим адресам (замените `yourdomain.com` на ваш реальный домен):
 
-    - **n8n:** `n8n.yourdomain.com` (Log in with the email address you provided during installation and the initial password from the summary report. You may be prompted to change this password on first login.)
-    - **ComfyUI:** `comfyui.yourdomain.com` (Node-based Stable Diffusion UI)
-    - **Dify:** `dify.yourdomain.com` (AI application development platform with comprehensive LLMOps capabilities)
-    - **Docling:** `docling.yourdomain.com` (Universal document converter with REST API; web UI available at `/ui`)
-    - **Flowise:** `flowise.yourdomain.com` (Log in with the email address you provided during installation and the initial password from the summary report.)
+    - **n8n:** `n8n.yourdomain.com` (Войдите, используя email-адрес, указанный вами во время установки, и начальный пароль из сводного отчета. При первом входе вам может быть предложено сменить этот пароль.)
+    - **ComfyUI:** `comfyui.yourdomain.com` (Нод-ориентированный UI для Stable Diffusion)
+    - **Dify:** `dify.yourdomain.com` (Платформа для разработки AI-приложений с комплексными LLMOps возможностями)
+    - **Docling:** `docling.yourdomain.com` (Универсальный конвертер документов с REST API; веб-интерфейс доступен по `/ui`)
+    - **Flowise:** `flowise.yourdomain.com` (Войдите, используя email-адрес, указанный вами во время установки, и начальный пароль из сводного отчета.)
     - **Grafana:** `grafana.yourdomain.com`
     - **Langfuse:** `langfuse.yourdomain.com`
     - **LightRAG:** `lightrag.yourdomain.com`
@@ -154,138 +154,133 @@ After successful installation, your services are up and running! Here's how to g
     - **Neo4j:** `neo4j.yourdomain.com`
     - **Open WebUI:** `webui.yourdomain.com`
     - **PaddleOCR:** `paddleocr.yourdomain.com`
-    - **Portainer:** `portainer.yourdomain.com` (Protected by Caddy basic auth; on first login, complete Portainer admin setup)
+    - **Portainer:** `portainer.yourdomain.com` (Защищено базовой аутентификацией Caddy; при первом входе завершите настройку администратора Portainer)
     - **Postgresus:** `postgresus.yourdomain.com`
     - **Postiz:** `postiz.yourdomain.com`
-    - **Prometheus:** `prometheus.yourdomain.com` (Typically used as a data source for Grafana)
+    - **Prometheus:** `prometheus.yourdomain.com` (Обычно используется как источник данных для Grafana)
     - **Qdrant:** `qdrant.yourdomain.com`
     - **RAGApp:** `ragapp.yourdomain.com`
     - **RAGFlow:** `ragflow.yourdomain.com`
     - **SearXNG:** `searxng.yourdomain.com`
-    - **Supabase (Dashboard):** `supabase.yourdomain.com`
-    - **WAHA:** `waha.yourdomain.com` (WhatsApp HTTP API; engines: WEBJS, NOWEB, GOWS)
+    - **Supabase (Дашборд):** `supabase.yourdomain.com`
+    - **WAHA:** `waha.yourdomain.com` (WhatsApp HTTP API; движки: WEBJS, NOWEB, GOWS)
     - **Weaviate:** `weaviate.yourdomain.com`
 
-### Optional Internal Utility: Python Runner
+### Опциональная внутренняя утилита: Python Runner
 
-- **What it is**: An internal-only service to run your custom Python code inside the same Docker network as your other services (n8n, Postgres, Qdrant, etc.). No external ports are exposed, and it is not proxied by Caddy.
-- **How to enable**: Select “Python Runner” in the Service Selection Wizard during install/update, or add the profile manually: `COMPOSE_PROFILES=...,python-runner`.
-- **Where to put code**: Place your Python files in `python-runner/`. The default entry point is `python-runner/main.py`.
-- **Dependencies**: Add them to `python-runner/requirements.txt`; they will be installed automatically on container start.
+- **Что это**: Внутренний сервис для запуска вашего кастомного Python-кода внутри той же Docker-сети, что и ваши другие сервисы (n8n, Postgres, Qdrant и т.д.). Внешние порты не экспортируются, и он не проксируется через Caddy.
+- **Как включить**: Выберите "Python Runner" в Мастере выбора сервисов во время установки/обновления или добавьте профиль вручную: `COMPOSE_PROFILES=...,python-runner`.
+- **Куда помещать код**: Помещайте ваши Python-файлы в `python-runner/`. Точка входа по умолчанию — `python-runner/main.py`.
+- **Зависимости**: Добавляйте их в `python-runner/requirements.txt`; они будут автоматически установлены при запуске контейнера.
 
-2.  **Explore n8n:**
+2.  **Изучите n8n:**
 
-    - Log in to your n8n instance. This is your central hub for workflow automation.
-    - If you chose to import the community workflows during installation, you'll find over 300 examples in your "Workflows" section. These are a great way to learn and get ideas.
-    - Start building your first workflow! You have access to over 400 integrations and powerful AI tools.
+    - Войдите в ваш экземпляр n8n. Это ваш центральный узел для автоматизации рабочих процессов.
+    - Если вы выбрали импорт рабочих процессов сообщества во время установки, вы найдете более 300 примеров в разделе "Workflows". Это отличный способ учиться и черпать идеи.
+    - Начните создавать ваш первый рабочий процесс! У вас есть доступ к более чем 400 интеграциям и мощным AI-инструментам.
 
-3.  **Utilize Integrated AI Tools:**
+3.  **Используйте интегрированные AI-инструменты:**
 
-    - **Connect n8n with Vector Stores:** Use n8n to connect to Qdrant (accessible via its own endpoint if needed, typically `qdrant.yourdomain.com`), Supabase, or Weaviate (`weaviate.yourdomain.com`) to store and retrieve information for your AI tasks like Retrieval Augmented Generation (RAG).
-    - **Build with Flowise:** Access Flowise at `flowise.yourdomain.com` to create AI agents and applications. You can trigger Flowise agents from n8n or vice-versa.
-    - **Interact with Open WebUI:** Use Open WebUI at `webui.yourdomain.com` as a chat interface for your local AI models or n8n agents (e.g., using the n8n_pipe integration if configured).
-    - **Configure LLMs:** If you wish to use large language models (LLMs) from providers like OpenAI, Anthropic, or locally via Ollama (if installed), you can easily configure credentials and connections within n8n nodes or in services like Flowise and Open WebUI.
+    - **Подключите n8n к векторным хранилищам:** Используйте n8n для подключения к Qdrant (доступен через его собственный эндпоинт, если нужно, обычно `qdrant.yourdomain.com`), Supabase или Weaviate (`weaviate.yourdomain.com`) для хранения и извлечения информации для ваших AI-задач, таких как Retrieval Augmented Generation (RAG).
+    - **Создавайте с Flowise:** Получите доступ к Flowise по адресу `flowise.yourdomain.com` для создания AI-агентов и приложений. Вы можете запускать агентов Flowise из n8n и наоборот.
+    - **Взаимодействуйте с Open WebUI:** Используйте Open WebUI по адресу `webui.yourdomain.com` как чат-интерфейс для ваших локальных AI-моделей или агентов n8n (например, используя интеграцию n8n_pipe, если настроено).
+    - **Настройте LLM:** Если вы хотите использовать большие языковые модели (LLM) от провайдеров, таких как OpenAI, Anthropic, или локально через Ollama (если установлен), вы можете легко настроить учетные данные и подключения внутри нод n8n или в сервисах типа Flowise и Open WebUI.
 
-4.  **Check Monitoring (Optional):**
-    - Visit Grafana (`grafana.yourdomain.com`) to see dashboards monitoring your system's performance (data sourced from Prometheus).
-	
+4.  **Проверьте мониторинг (Опционально):**
+    - Посетите Grafana (`grafana.yourdomain.com`), чтобы увидеть дашборды, отслеживающие производительность вашей системы (данные поступают из Prometheus).
 
-## 🔒 Secure Access with Cloudflare Tunnel (Optional)
+## 🔒 Безопасный доступ с помощью Cloudflare Tunnel (Опционально)
 
-Cloudflare Tunnel provides zero-trust access to your services without exposing any ports on your server. All traffic is routed through Cloudflare's secure network, providing DDoS protection and hiding your server's IP address.
+Cloudflare Tunnel обеспечивает доступ к вашим сервисам с нулевым доверием (zero-trust) без открытия каких-либо портов на вашем сервере. Весь трафик маршрутизируется через защищенную сеть Cloudflare, обеспечивая защиту от DDoS и скрывая IP-адрес вашего сервера.
 
-### Benefits
-- **No exposed ports** - Ports 80/443 can be completely closed
-- **DDoS protection** - Built-in Cloudflare protection
-- **IP hiding** - Your server's real IP is never exposed
-- **Zero-trust security** - Optional Cloudflare Access integration
-- **No public IP required** - Works on private networks
+### Преимущества
+- **Нет открытых портов** — Порты 80/443 могут быть полностью закрыты.
+- **Защита от DDoS** — Встроенная защита Cloudflare.
+- **Скрытие IP** — Реальный IP вашего сервера никогда не раскрывается.
+- **Безопасность с нулевым доверием** — Опциональная интеграция с Cloudflare Access.
+- **Не требуется публичный IP** — Работает в частных сетях.
 
-### Setup Instructions
+### Инструкции по настройке
 
-See the Cloudflare Tunnel guide: [cloudflare-instructions.md](cloudflare-instructions.md)
+Смотрите руководство по Cloudflare Tunnel: [cloudflare-instructions.md](cloudflare-instructions.md)
 
+### Использование предустановленных библиотек в пользовательском JavaScript n8n
 
-### Using Pre-installed Libraries in n8n's Custom JavaScript
+Данная настройка предустанавливает полезные Node.js библиотеки для использования в нодах Code в n8n, позволяя вам писать пользовательские JavaScript-сниппеты с расширенными возможностями:
 
-This setup pre-installs useful Node.js libraries for use in n8n's Code nodes, allowing you to write custom JavaScript snippets with enhanced capabilities:
+- **`cheerio`**: Для парсинга и манипуляции HTML/XML (например, веб-скрапинг).
+- **`axios`**: Promise-based HTTP-клиент для выполнения запросов к внешним API.
+- **`moment`**: Для парсинга, валидации, манипуляции и отображения дат/времени.
+- **`lodash`**: Библиотека утилит для общих программистских задач (массивы, объекты, строки и т.д.).
 
-- **`cheerio`**: For parsing and manipulating HTML/XML (e.g., web scraping).
-- **`axios`**: A promise-based HTTP client for making requests to external APIs.
-- **`moment`**: For parsing, validating, manipulating, and displaying dates/times.
-- **`lodash`**: A utility library for common programming tasks (arrays, objects, strings, etc.).
+## Обновление
 
-## Upgrading
-
-To update all components (n8n, Open WebUI, etc.) to their latest versions and incorporate the newest changes from this installer project, use the update script from the project root:
+Чтобы обновить все компоненты (n8n, Open WebUI и т.д.) до их последних версий и включить новейшие изменения из этого проекта-установщика, используйте скрипт обновления из корневой директории проекта:
 
 ```bash
 sudo bash ./scripts/update.sh
 ```
+Этот скрипт выполнит следующие действия:
 
-This script will:
+1.  Получит последние обновления для установщика из Git-репозитория.
+2.  Временно остановит работающие в данный момент сервисы.
+3.  Загрузит последние версии Docker-образов для всех сервисов.
+4.  Спросит, хотите ли вы повторно запустить импорт рабочих процессов n8n (полезно, если вы пропустили это во время первоначальной установки или хотите обновить рабочие процессы сообщества).
+5.  Перезапустит все сервисы с новыми обновлениями.
 
-1.  Fetch the latest updates for the installer from the Git repository.
-2.  Temporarily stop the currently running services.
-3.  Download the latest versions of the Docker images for all services.
-4.  Ask if you want to re-run the n8n workflow import (useful if you skipped this during the initial installation or want to refresh the community workflows).
-5.  Restart all services with the new updates.
+## Очистка Docker
 
-## Cleaning up Docker
-
-If you need to free up disk space, you can run the Docker cleanup script. This script removes all unused Docker containers, images, and volumes.
+Если вам нужно освободить место на диске, вы можете запустить скрипт очистки Docker. Этот скрипт удаляет все неиспользуемые контейнеры, образы и тома Docker.
 
 ```bash
 sudo bash ./scripts/docker_cleanup.sh
 ```
+Это может быть полезно для удаления старых образов и освобождения места, но имейте в виду, что он удалит все неиспользуемые данные.
 
-This can be useful for removing old images and freeing up space, but be aware that it will remove all unused data.
+## Важные ссылки
 
-## Important Links
+- Основано на проекте от [coleam00](https://github.com/coleam00/local-ai-packaged)
+- [Оригинальный Starter Kit](https://github.com/n8n-io/self-hosted-ai-starter-kit) от команды n8n
 
-- Based on a project by [coleam00](https://github.com/coleam00/local-ai-packaged)
-- [Original Starter Kit](https://github.com/n8n-io/self-hosted-ai-starter-kit) by the n8n team
+## Решение проблем
 
-## Troubleshooting
+Вот решения распространенных проблем, с которыми вы можете столкнуться:
 
-Here are solutions to common issues you might encounter:
+### Сайты не загружаются, даже после следования инструкциям
 
-### Sites not loading even after following the instructions
+- **Симптом:** Ваши домены/сайты не открываются или возвращают ошибки, даже если вы выполнили все шаги установки.
+- **Вероятная причина:** Ваш VPS не имеет достаточных ресурсов для выбранного набора сервисов.
+- **Что попробовать:**
+  1.Проверьте текущее использование CPU и RAM (например, с помощью top/htop, free -h и docker stats). Если ресурсы перегружены, улучшите сервер или уменьшите количество запущенных сервисов.
+  2. Попробуйте минимальную конфигурацию — запустите только n8n и убедитесь, что он запускается. Если это работает в минимальной настройке, включайте другие сервисы постепенно, отслеживая нагрузку.
 
-- **Symptom:** Your domains/sites do not open or return errors even though you completed all installation steps.
-- **Likely cause:** Your VPS does not have enough resources for the set of services you selected.
-- **What to try:**
-  1. Check current CPU and RAM usage (e.g., with `top`/`htop`, `free -h`, and `docker stats`). If resources are saturated, upgrade the server or reduce the number of running services.
-  2. Try a minimal configuration — start only `n8n` and verify it comes up. If it works in this minimal setup, enable other services gradually while monitoring the load.
+### Временное предупреждение "Опасный сайт" в браузере
 
-### Temporary "Dangerous Site" Warning in Browser
+- **Симптом:**Сразу после развертывания сервисов ваш браузер (например, Chrome) может отображать предупреждение "Опасный сайт" или подобное, когда вы пытаетесь получить доступ к вашим сервисам. Это предупреждение обычно исчезает через некоторое время (например, в течение нескольких часов или на следующий день).
+- **Причина:** Это может произойти по нескольким причинам:
+  1.  **Краткое использование самоподписанного сертификата:**  Когда Caddy (веб-сервер, управляющий вашими SSL-сертификатами) запускается для нового домена, он может кратковременно использовать временный, самоподписанный сертификат, пока находится в процессе запроса и получения валидного SSL-сертификата от Let's Encrypt.
+  2.  **Задержка в применении нового сертификата:**  Также может быть короткая задержка перед тем, как вновь полученный сертификат от Let's Encrypt будет полностью применен и распознан всеми системами.
+- **Решение:** Обычно это временная проблема, которая разрешается сама собой. Дайте ей немного времени. Если предупреждение сохраняется более 24 часов, проверьте логи Caddy на наличие ошибок, связанных с получением сертификата, и убедитесь, что ваши настройки DNS правильно указывают ваш домен на IP-адрес сервера. Вы также можете попробовать очистить кэш браузера или использовать режим инкогнито/приватного окна для повторной проверки.
+### Общие проблемы
 
-- **Symptom:** Immediately after deploying the services, your browser (e.g., Chrome) might display a "Dangerous Site" or similar security warning when you try to access your services. This warning typically disappears after some time (e.g., within a few hours or by the next day).
-- **Cause:** This can happen for a couple of reasons:
-  1.  **Brief use of a self-signed certificate:** When Caddy (the web server managing your SSL certificates) starts up for a new domain, it might briefly use a temporary, self-signed certificate while it's in the process of requesting and obtaining a valid SSL certificate from Let's Encrypt.
-  2.  **Delay in applying the new certificate:** There might also be a short delay before the newly obtained certificate from Let's Encrypt is fully applied and recognized by all systems.
-- **Solution:** This is usually a temporary issue and resolves itself. Give it some time. If the warning persists for more than 24 hours, check your Caddy logs for any errors related to certificate acquisition and ensure your DNS settings are correctly pointing your domain to the server's IP address. You can also try clearing your browser's cache or using an incognito/private window to re-check.
+- **Конфликты с VPN:** Использование VPN может мешать загрузке Docker-образов. Если у вас возникли проблемы с получением образов, попробуйте временно отключить ваш VPN.
+- **Требования к серверу:**  Если вы столкнулись с неожиданными проблемами, убедитесь, что ваш сервер соответствует минимальным аппаратным требованиям и требованиям к операционной системе (включая версию), указанным в разделе "Предварительные требования перед установкой".
 
-### General Issues
+## 👓 Рекомендуем ознакомится(Полезные ресурсы)
 
-- **VPN Conflicts:** Using a VPN might interfere with downloading Docker images. If you encounter issues pulling images, try temporarily disabling your VPN.
-- **Server Requirements:** If you experience unexpected issues, ensure your server meets the minimum hardware and operating system requirements (including version) as specified in the "Prerequisites before Installation" section.
+n8n предлагает отличные ресурсы для начала работы с его AI-возможностями:
 
-## 👓 Recommended Reading
+- [AI-агенты для разработчиков: от теории к практике с n8n](https://blog.n8n.io/ai-agents/)
+- [Туториал: Создание AI-рабочего процесса в n8n](https://docs.n8n.io/advanced-ai/intro-tutorial/)
+- [Концепции Langchain в n8n ](https://docs.n8n.io/advanced-ai/langchain/langchain-n8n/) (Langchain — это фреймворк, который n8n использует для некоторых AI-функций)
+- [Демонстрация ключевых различий между агентами и цепочками](https://docs.n8n.io/advanced-ai/examples/agent-chain-comparison/)
+- [Что такое векторные базы данных?](https://docs.n8n.io/advanced-ai/examples/understand-vector-databases/)  (Более подробно объясняет такие инструменты, как Supabase и Qdrant)
 
-n8n offers excellent resources for getting started with its AI capabilities:
+## 🛍️  Другие AI-шаблоны
 
-- [AI agents for developers: from theory to practice with n8n](https://blog.n8n.io/ai-agents/)
-- [Tutorial: Build an AI workflow in n8n](https://docs.n8n.io/advanced-ai/intro-tutorial/)
-- [Langchain Concepts in n8n](https://docs.n8n.io/advanced-ai/langchain/langchain-n8n/) (Langchain is a framework n8n uses for some AI features)
-- [Demonstration of key differences between agents and chains](https://docs.n8n.io/advanced-ai/examples/agent-chain-comparison/)
-- [What are vector databases?](https://docs.n8n.io/advanced-ai/examples/understand-vector-databases/) (Explains tools like Supabase and Qdrant in more detail)
+Для получения большего количества идей по AI-рабочим процессам посетите [**официальную галерею AI-шаблонов n8n**](https://n8n.io/workflows/?categories=AI).  В каждом рабочем процессе выберите кнопку Use workflow, чтобы автоматически импортировать его в ваш экземпляр n8n.
 
-## 🛍️ More AI Templates
-
-For more AI workflow ideas, visit the [**official n8n AI template gallery**](https://n8n.io/workflows/?categories=AI). From each workflow, select the **Use workflow** button to automatically import it into your n8n instance.
-
-### AI Templates (Examples from n8n.io)
+### AI-шаблоны (Примеры с n8n.io)
 
 - [AI Agent Chat](https://n8n.io/workflows/1954-ai-agent-chat/)
 - [AI chat with any data source (using the n8n workflow tool)](https://n8n.io/workflows/2026-ai-chat-with-any-data-source-using-the-n8n-workflow-tool/)
@@ -298,23 +293,22 @@ For more AI workflow ideas, visit the [**official n8n AI template gallery**](htt
 - [Financial Documents Assistant using Qdrant and MistralAI](https://n8n.io/workflows/2335-build-a-financial-documents-assistant-using-qdrant-and-mistralai/)
 - [Recipe Recommendations with Qdrant and Mistral](https://n8n.io/workflows/2333-recipe-recommendations-with-qdrant-and-mistral/)
 
-## Tips & Tricks
+## Советы и хитрости
 
-### Accessing Files on the Server
+### Доступ к файлам на сервере
 
-The installer creates a `shared` folder (by default, located in the same directory where you ran the installation script). This folder is accessible by the n8n application.
-When you build automations in n8n that need to read or write files on your server, use the path `/data/shared` inside your n8n workflows. This path in n8n points to the `shared` folder on your server.
+Установщик создает папку `shared` (по умолчанию расположенную в той же директории, где вы запускали скрипт установки). Эта папка доступна приложению n8n.
+Когда вы создаете автоматизации в n8n, которым нужно читать или записывать файлы на вашем сервере, используйте путь `/data/shared` внутри ваших рабочих процессов n8n. Этот путь в n8n указывает на папку shared на вашем сервере.
+**Компоненты n8n, взаимодействующие с файловой системой сервера:**
 
-**n8n components that interact with the server's filesystem:**
+- [Чтение/Запись файлов с диска](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.filesreadwrite/)
+- [Триггер локального файла ](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.localfiletrigger/) (Для запуска рабочих процессов при изменении файлов)
+- [Выполнение команды ](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executecommand/) (Для запуска рабочих процессов при изменении файлов)
 
-- [Read/Write Files from Disk](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.filesreadwrite/)
-- [Local File Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.localfiletrigger/) (To start workflows when files change)
-- [Execute Command](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executecommand/) (To run command-line tools)
-
-## 🙌 Contributors
-
-Want to see who has contributed to this project? Check out the [**GitHub Contributors Page**](https://github.com/kossakovsky/n8n-install/graphs/contributors)!
+## 🙌  Контрибьюторы
+Хотите посмотреть, кто внес вклад в этот проект? 
+[**Посетите Страницу контрибьюторов на GitHub**](https://github.com/kossakovsky/n8n-install/graphs/contributors)!
 
 ## 📜 License
 
-This project (originally created by the n8n team, with further development by contributors - see "Important Links") is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+Этот проект (изначально созданный командой n8n, с дальнейшей разработкой контрибьюторами — см. "Важные ссылки") лицензирован под лицензией Apache 2.0. Подробности смотрите в файле [LICENSE](LICENSE).
